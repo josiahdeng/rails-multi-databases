@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MultiDatabase</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if flash.present?%>
+      <% p flash %>
+      <h3 class="<%= flash[:notice].present? ? 'notice' : 'error' %>"><%= flash[:notice] || flash[:error] %></h3>
+    <% end %>
+    <%= yield %>
+
+  <style>
+      .notice{
+        background: green;
+        text-align: center;
+      }
+
+      .error{
+        background: red;
+        text-align: center;
+      }
+  </style>
+  </body>
+</html>

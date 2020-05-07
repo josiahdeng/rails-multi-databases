@@ -1,0 +1,9 @@
+/Gemfile.lock
+/test/
+/tmp/
+/config/database.yml
+/config/writer_database.yml
+.idea/
+/log/
+/.generators
+/.rakeTasks

@@ -1,0 +1,3 @@
+作者: <%= f.select :writer_id, Writer::Writer.all.collect { |p| [ p.name, p.id ] }, include_blank: true %><br/>
+博客名: <%= f.text_field :name %><br/>
+<%= submit_tag "提交" %>

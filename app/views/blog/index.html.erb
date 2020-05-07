@@ -1,0 +1,33 @@
+<%= link_to "作者", writer_writer_index_path %><br/>
+<%= link_to "新建文章", new_blog_path %>
+<h2>文章</h2>
+<% if @blogs.blank? %>
+  <table>
+    <tr>
+      <td>没有数据</td>
+    </tr>
+  </table>
+<% else %>
+  <%= grid(@blogs) do |g|
+
+    g.column name: 'ID' do |blog|
+      blog.id
+    end
+
+    g.column name: '作者名' do |blog|
+      blog.writer.try(:name)
+    end
+
+    g.column name: '博客名' do |blog|
+      blog.name
+    end
+
+    g.column name: '操作' do |blog|
+      link_to('删除', blog_path(blog.id), method: :delete)
+    end
+
+    g.column do |blog|
+      link_to('编辑', edit_blog_path(blog.id))
+    end
+  end -%>
+<% end %>
