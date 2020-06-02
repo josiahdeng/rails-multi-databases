@@ -12,11 +12,11 @@ class WriterPolicy < ApplicationPolicy
   end
 
   def update?
-    index?
+    edit?
   end
 
   def edit?
-    index?
+    user.author == 1
   end
 
   def destroy?
