@@ -59,3 +59,9 @@ gem 'paranoia', '~> 2.4', '>= 2.4.2'
 gem 'wice_grid', '~> 4.1'
 
 gem 'font-awesome-sass',  '~> 4.3'
+
+gem 'pundit', '~> 2.1'
+
+gem 'devise', '~> 4.7', '>= 4.7.1'
+
+

@@ -9,8 +9,12 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <%= link_to "注销", destroy_user_session_path, method: :delete, style: "float: right" %>
+      <div class="clearfix"></div>
+      <br/>
+    <% end %>
     <% if flash.present?%>
-      <% p flash %>
       <h3 class="<%= flash[:notice].present? ? 'notice' : 'error' %>"><%= flash[:notice] || flash[:error] %></h3>
     <% end %>
     <%= yield %>

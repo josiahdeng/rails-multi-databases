@@ -1,9 +1,10 @@
 class Writer::WriterController < ApplicationController
   before_action :find_writer, only: [:edit, :update, :destroy]
-
+  before_action :check_author
   #首页
   def index
-    @writers = initialize_grid(Writer::Writer, order: :id)
+    #由于使用了grid导致查出来的数据还是deleted,随便意思一下
+    @writers = initialize_grid(policy_scope(Writer::Writer, policy_scope_class: WriterPolicy::Scope), order: :id)
   end
 
   #新建
@@ -49,5 +50,9 @@ class Writer::WriterController < ApplicationController
       flash[:error] = "找不到此id的数据"
       redirect_to action: :index
     end
+  end
+
+  def check_author
+    authorize :writer
   end
 end
