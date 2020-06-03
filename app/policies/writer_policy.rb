@@ -26,9 +26,9 @@ class WriterPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.author == 1
-        scope.unscope(where: :deleted)
-      else
         scope.all
+      else
+        scope.where("created_at >= #{DateTime.now.strftime('%Y/%m/%d')}")
       end
     end
   end
