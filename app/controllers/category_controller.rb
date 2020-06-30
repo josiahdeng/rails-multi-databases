@@ -2,7 +2,7 @@ class CategoryController < ApplicationController
   before_action :find_by_id, only: [:edit, :update, :destroy]
 
   def index
-    @categories = initialize_grid(Category, order: :lft)
+    @categories = initialize_grid(Category.order(Category.order_for_rebuild))
   end
 
   def new
