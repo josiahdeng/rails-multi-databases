@@ -39,9 +39,15 @@ class BlogController < ApplicationController
     redirect_to action: :index
   end
 
+  #测试邮件模板
+  def test_mustache
+    blogs = Blog.all
+    UserMail.send_mail(blogs).deliver
+  end
+
   private
   def allow_params
-    params.require("blog").permit(:name, :writer_id)
+    params.require("blog").permit(:name, :writer_id, :published, :category_id)
   end
 
   def find_blog

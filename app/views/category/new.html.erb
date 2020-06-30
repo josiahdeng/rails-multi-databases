@@ -1,0 +1,7 @@
+<%= link_to "返回", category_index_path %>
+<h2>分类新建</h2>
+<%= render 'category/error_messages' %>
+<%= form_for @category, url: {controller: "category", action: "create"} do |f|%>
+  <%= render "category/form", f: f %>
+  <%= f.submit "提交"%>
+<% end %>

@@ -1,0 +1,11 @@
+This is Book Shop
+{{#blogs_arr}}
+{{> name }}
+{{{writer_name}}}
+{{#is_published}}
+The book is {{#wrapped}}published!{{/wrapped}}
+{{/is_published}}
+{{/blogs_arr}}
+{{^blogs_arr}}
+No book in shop!
+{{/blogs_arr}}

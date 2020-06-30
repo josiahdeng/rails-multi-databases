@@ -1,6 +1,8 @@
 <%= link_to "作者", writer_writer_index_path %><br/>
 <%= link_to "新建文章", new_blog_path %>
 <%= link_to "新建作者", new_writer_writer_path %>
+<%= link_to "分类一览", category_index_path %>
+<%= button_tag "测试mustache", type: "button", onclick: "testMustache()" %>
 <h2>文章</h2>
 <% if @blogs.blank? %>
   <table>
@@ -13,6 +15,13 @@
 
     g.column name: 'ID' do |blog|
       blog.id
+    end
+
+    g.column name: "类名" do |blog|
+      depth_list = []
+      depth_list = (blog.category.try(:ancestors)|| []).collect(&:name)
+      depth_list << blog.category.try(:name)
+      depth_list.join("->")
     end
 
     g.column name: '作者名' do |blog|
@@ -32,3 +41,12 @@
     end
   end -%>
 <% end %>
+
+<script>
+  function testMustache() {
+    $.ajax({
+        url: "<%= test_mustache_blog_index_path %>",
+        type: 'get'
+    });
+  }
+</script>

@@ -1,0 +1,7 @@
+<% if @category.errors.present? %>
+  <ul>
+    <% @category.errors.full_messages.each do |mes| %>
+      <li><%= mes %></li>
+    <% end %>
+  </ul>
+<% end %>

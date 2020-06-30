@@ -1,0 +1,51 @@
+<%= link_to "新建分类", new_category_path %>
+<%= link_to "博客", blog_index_path %>
+<h2>分类</h2>
+<% if @categories.blank? %>
+  <table>
+    <tr>
+      <td>没有数据</td>
+    </tr>
+  </table>
+<% else %>
+  <%= grid(@categories) do |g|
+
+    g.column name: 'ID' do |category|
+      category.id
+    end
+
+    g.column name: '分类名' do |category|
+      category.name
+    end
+
+    g.column name: '上级分类' do |category|
+      category.parent.try(:name)
+    end
+
+    g.column name: "层级预览" do |category|
+      depth_preview = category.ancestors.collect(&:name)
+      depth_preview << category.name
+      depth_preview.join("->")
+    end
+
+    g.column name: 'lft' do |category|
+      category.lft
+    end
+
+    g.column name: 'rft' do |category|
+      category.rgt
+    end
+
+    g.column name: 'depth' do |category|
+      category.depth
+    end
+
+    g.column name: '操作' do |category|
+      link_to('删除', category_path(category.id), method: :delete)
+    end
+
+    g.column do |blog|
+      link_to('编辑', edit_category_path(blog.id))
+    end
+  end -%>
+<% end %>

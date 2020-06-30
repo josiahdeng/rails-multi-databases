@@ -1,3 +1,5 @@
+分类: <%= f.select :category_id, Category.where(depth: 2).collect { |category| [(category.ancestors.collect(&:name) << category.name).join("->"), category.id ]}, include_blank: true %><br/>
 作者: <%= f.select :writer_id, Writer::Writer.all.collect { |p| [ p.name, p.id ] }, include_blank: true %><br/>
 博客名: <%= f.text_field :name %><br/>
+是否出版: <%= f.radio_button :published, true %> <%= f.radio_button :published, false %> <br/>
 <%= submit_tag "提交" %>

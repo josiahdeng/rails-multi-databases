@@ -64,4 +64,8 @@ gem 'pundit', '~> 2.1'
 
 gem 'devise', '~> 4.7', '>= 4.7.1'
 
+gem 'mustache', '~> 1.1', '>= 1.1.1'
+
+gem 'awesome_nested_set', '~> 3.2', '>= 3.2.1'
+
 
