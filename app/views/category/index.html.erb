@@ -40,6 +40,10 @@
       category.depth
     end
 
+    g.column name: 'children_count' do |category|
+      category.children_count
+    end
+
     g.column name: '操作' do |category|
       link_to('删除', category_path(category.id), method: :delete)
     end
